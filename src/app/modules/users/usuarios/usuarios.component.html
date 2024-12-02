@@ -1,0 +1,69 @@
+<h1 class="text-5xl text-black-900  font-extrabold">Usuarios</h1>
+<div class="text-left">
+    <a type="button" 
+    class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+    [routerLink]="['/modules/registrar_usuario']"
+    >Añadir</a>
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Username
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Password
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nombre completo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Cargo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Editar
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Eliminar
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                *ngFor="let usuario of users.usuarios">
+                    <td class="px-6 py-4">
+                        {{usuario.idUsuario}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.usuario}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.password}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.nombre}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.cargo}}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                        [routerLink]="['/modules/modificar_usuario/',usuario.idUsuario]">
+                            Editar</button>
+
+                    </td>
+                    <td class="px-6 py-4">
+                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                        [routerLink]="['/modules/eliminar_usuario/',usuario.idUsuario]">Eliminar</button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
