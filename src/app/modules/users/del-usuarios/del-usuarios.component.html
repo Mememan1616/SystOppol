@@ -1,1 +1,53 @@
-<p>del-usuarios works!</p>
+<h1 class="text-5xl text-black-900  font-extrabold">Eliminar Usuario</h1>
+<form class="max-w-sm mx-auto" [formGroup]="formGroup" (ngSubmit)="borraUsuario()">
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900"
+    
+    >Username</label>
+    <input type="text" id="usuario" aria-describedby="helper-text-explanation" 
+    formControlName="usuario"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+
+    <label for="password" class="block mb-2 text-sm text-left text-gray-900"
+    >Password</label>
+    <input type="text" id="password" aria-describedby="helper-text-explanation" 
+    formControlName="password"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900"
+   >Nombre completo</label>
+    <input type="text" id="nombre" aria-describedby="helper-text-explanation" 
+    formControlName="nombre"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+
+    <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Tipo de vinculacion</label>
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    formControlName="cargo"
+    >
+      <option selected>Cargo</option>
+      <option value=1>Administrador</option>
+      <option value=3>Encuestador</option>
+      <option value=2>Lider de zona</option>
+    </select>
+
+    <div class="row">
+      <div class="col-6">
+        <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >Eliminar</button>
+      </div>
+
+      <div class="col-6">
+        
+        <button type="button" 
+        [routerLink]="['/modules/usuarios']"
+        class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >Cancelar</button>
+
+      </div>
+    </div>
+    
+
+
+
+
+    
+</form>

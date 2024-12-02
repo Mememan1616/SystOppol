@@ -13,7 +13,7 @@ export default [
     },
     {
         path:'registrar_usuario',
-        loadComponent:()=> import('./form-usurio/form-usurio.component')
+        loadComponent:()=> import('./users/form-usurio/form-usurio.component')
     },
     {
         path:'modificar_usuario/:id',

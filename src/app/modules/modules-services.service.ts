@@ -31,11 +31,22 @@ export class ModulesServicesService {
   }
 
   public añadirUsuario(datos:Usuarios){
-    console.log('Datos enviados',datos)
+    //console.log('Datos enviados',datos)
     return this.http.post('http://127.0.0.1:5000/newusuario',datos)
   }
+  
+  public buscarUsuario(id:number){
+    return this.http.get<Usuarios>('http://127.0.0.1:5000/buscar_usuario/'+id)
+  }
 
+  public borrarUsuario(id:number) {
+    //console.log(`http://127.0.0.1:5000/eliminar_usuario/${id}`);
+    return this.http.put(`http://127.0.0.1:5000/eliminar_usuario/`+id, {});
+  }
 
+  public modificarUsuario(id:number, datos:Usuarios){
+    return this.http.put('http://127.0.0.1:5000/modificar_usuario/'+id,datos)
+  }
 
   
 }

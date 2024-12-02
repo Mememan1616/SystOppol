@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModulesServicesService } from '../modules-services.service';
+import { ModulesServicesService } from '../../modules-services.service';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
 import { RouterLink,Router } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-import { Usuarios } from '../interfaces/usuarios';
+import { Usuarios } from '../../interfaces/usuarios';
 
 
 @Component({
@@ -49,9 +47,10 @@ export default class  FormUsurioComponent implements OnInit {
   insertarUsuario(){
     this.usuarios.añadirUsuario(this.newUser).subscribe({
       next:()=>console.log(),
+      
       complete:()=>console.info()})
 
-
+    
     this.newUser={
       idUsuario:0,
       usuario:'',
@@ -61,7 +60,9 @@ export default class  FormUsurioComponent implements OnInit {
       estatus:1,
       nombre:''
     }
+    
     this.router.navigate(['modules/usuarios'])
+    alert('Usuario eliminado exitosamente.');
   }
 
   nuevoUsuario():void{
