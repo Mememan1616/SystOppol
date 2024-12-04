@@ -45,6 +45,7 @@ export class ModulesServicesService {
   }
 
   public modificarUsuario(id:number, datos:Usuarios){
+    //console.log('http://127.0.0.1:5000/modificar_usuario/'+id,datos)
     return this.http.put('http://127.0.0.1:5000/modificar_usuario/'+id,datos)
   }
 

@@ -62,7 +62,7 @@ export default class  FormUsurioComponent implements OnInit {
     }
     
     this.router.navigate(['modules/usuarios'])
-    alert('Usuario eliminado exitosamente.');
+    alert('Usuario agregado exitosamente.');
   }
 
   nuevoUsuario():void{

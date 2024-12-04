@@ -12,6 +12,7 @@ export interface simpatizantes{
     codigoP:string,
     direccion:string,
     vinculacion:string,
+    liderazgo:number,
     fcredencial:File,
     bcredencial:File
 }

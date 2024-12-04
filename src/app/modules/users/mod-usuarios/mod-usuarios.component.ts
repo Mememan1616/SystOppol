@@ -33,7 +33,7 @@ export default class  ModUsuariosComponent {
 
   constructor(private fb:FormBuilder, public service:ModulesServicesService, private router:Router, private location:Location){}
 
-  
+
 
   
   ngOnInit(){
@@ -77,7 +77,14 @@ export default class  ModUsuariosComponent {
 
   }
 
-
+  updateUsuarios(){
+    this.service.modificarUsuario(this.tem[3], this.user).subscribe({
+    next:()=>console.log(),
+    error:(e)=> console.error(e),
+    complete:()=>console.info()
+    })
+    alert('Usuario modificado exitosamente.');
+  }
 
   modificaUsuarios(){
     const{usuario, password, nombre, cargo}=this.formGroup.value
@@ -93,6 +100,8 @@ export default class  ModUsuariosComponent {
     }
     this.user.cargoID=Number(cargo);
     console.log(this.user)
+    this.updateUsuarios()
+    this.router.navigate(['modules/usuarios'])
   }
 
 }

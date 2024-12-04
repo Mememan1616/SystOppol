@@ -1,43 +1,52 @@
 <h1 class="text-5xl text-black-900  font-extrabold">Editar Usuario</h1>
+<div>
+  <p class="text-white">-----------------------------</p>
+</div>
 <form class="max-w-sm mx-auto" [formGroup]="formGroup" (ngSubmit)="modificaUsuarios()">
-    <label for="text" class="block mb-2 text-sm text-left text-gray-900"
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900 text-lg font-medium"
     
     >Username</label>
     <input type="text" id="usuario" aria-describedby="helper-text-explanation" 
     formControlName="usuario"
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="text-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
 
-    <label for="password" class="block mb-2 text-sm text-left text-gray-900"
+    <label for="password" class="block mb-2 text-sm text-left text-gray-900 text-lg font-medium"
     >Password</label>
     <input type="password" id="password" aria-describedby="helper-text-explanation" 
     formControlName="password"
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="text-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
 
-    <label for="text" class="block mb-2 text-sm text-left text-gray-900"
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900 text-lg font-medium"
    >Nombre completo</label>
     <input type="text" id="nombre" aria-describedby="helper-text-explanation" 
     formControlName="nombre"
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="text-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
 
-    <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Tipo de vinculacion</label>
-    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900 text-lg font-medium">Tipo de vinculacion</label>
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-lg"
     formControlName="cargo">
       <option selected>Cargo</option>
       <option value=1>Administrador</option>
       <option value=3>Encuestador</option>
       <option value=2>Lider de zona</option>
     </select>
-
+    <div>
+      <p class="text-white">-----------------------------</p>
+    </div>
     <div class="row">
       <div class="col-6">
-        <button type="submit" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        <button type="submit" class="
+        bi bi-capslock-fill
+        text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >Modificar</button>
       </div>
-
+      
       <div class="col-6">
-        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        <button type="button" class="
+        bi bi-x-square-fill
+        text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         [routerLink]="['/modules/usuarios']"
-        >Cancelar</button>
+        > Cancelar</button>
 
       </div>
     </div>

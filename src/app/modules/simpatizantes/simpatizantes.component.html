@@ -1,31 +1,39 @@
 <h1 class="text-5xl text-black-900  font-extrabold">Simpatizantes</h1>
-
+<div>
+  <p class="text-white">-----------------------------</p>
+</div>
 <div class="row">
 
-<form class="max-w-sm mx-auto"  [formGroup]="formGroup"> 
-    <label for="email" class="block mb-2 text-sm text-left text-gray-900">Apellido Paterno</label>
+<form class="max-w-sm mx-auto"  [formGroup]="formGroup" (ngSubmit)="tomarDatos()"> 
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900">Apellido Paterno</label>
     <input type="text" id="email" aria-describedby="helper-text-explanation" 
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="" required
+    formControlName="apellidoP">
 
-    <label for="email" class="block mb-2 text-sm text-left text-gray-900">Apellido Materno</label>
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900">Apellido Materno</label>
     <input type="text" id="email" aria-describedby="helper-text-explanation" 
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+    formControlName="apellidoM">
 
-    <label for="email" class="block mb-2 text-sm text-left text-gray-900">Nombre</label>
+    <label for="text" class="block mb-2 text-sm text-left text-gray-900">Nombre</label>
     <input type="text" id="email" aria-describedby="helper-text-explanation" 
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+    formControlName="nombre">
 
-    <label for="email" class="block mb-2 text-sm text-left text-gray-900">Fecha Nacimiento</label>
+    <label for="date" class="block mb-2 text-sm text-left text-gray-900">Fecha Nacimiento</label>
     <input type="date" id="email" aria-describedby="helper-text-explanation" 
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+    formControlName="fechaNac">
 
     <label for="email" class="block mb-2 text-sm text-left text-gray-900">Telefono</label>
     <input type="text" id="email" aria-describedby="helper-text-explanation" 
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+    formControlName="telefono">
     
     <label for="email" class="block mb-2 text-sm text-left text-gray-900">Correo</label>
     <input type="email" id="email" aria-describedby="helper-text-explanation" 
-    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@gmail.com">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@gmail.com"
+    formControlName="correo">
 
     
 
@@ -60,10 +68,12 @@
     <label for="email" class="block mb-2 text-sm text-left text-gray-900">Codigo postal</label>
     <input type="number" id="email" aria-describedby="helper-text-explanation" 
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-    placeholder="37744">
+    placeholder="37744" 
+    formControlName="codigoP">
 
     <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Colonia</label>
-    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    formControlName="colonia">
       <option selected>Selecciona una colonia</option>
       <option value=1>Seccion 1</option>
       <option value=2>Seccion 2</option>
@@ -74,28 +84,50 @@
     <label for="email" class="block mb-2 text-sm text-left text-gray-900">Direccion</label>
     <input type="text" id="email" aria-describedby="helper-text-explanation" 
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-    placeholder="Calle x numero 222">
+    placeholder="Calle x numero 222"
+    formControlName="direccion">
 
     <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Tipo de vinculacion</label>
-    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-      <option selected>Selecciona una opcion</option>
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    formControlName="vinculacion">
+      <option selected value="">Selecciona una opcion</option>
       <option value=1>Militante</option>
       <option value=2>Simpatizante</option>
       <option value=3>Ninguno</option>
     </select>
+    
+    <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Liderazgo</label>
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    formControlName="liderazgo">
+      <option selected value="">Selecciona una opcion</option>
+      <option
+      *ngFor="let usuario of Usuarios.usuarios" [value]="usuario.idUsuario"
+      >{{usuario.nombre}}</option>
+     
+    </select>
 
 <div  class="text-left">
 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Frente de la credencial</label>
-<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+type="file"
+id="fcredencial_input" 
+type="file" 
+(change)="onFileChange1($event)" 
+formControlName="fcredencial">
 
 
 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Detras de la credencial</label>
-<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+ id="file_input" 
+type="file"
+(change)="onFileChange2($event)"
+formControlName="bcredencial">
 </div>
     <p class="text-white">-</p>
 
-    <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-    type="submit">Subir</button>
+    <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2
+    bi bi-box-arrow-up"> Registrar</button>
+
 
     
 </form>
