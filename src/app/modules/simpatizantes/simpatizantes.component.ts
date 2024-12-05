@@ -20,14 +20,15 @@ export default class SimpatizantesComponent implements OnInit {
  
   constructor(public servicios:ModulesServicesService, private fb: FormBuilder){}
   dataSource:any=[];
-  imagen1:any;
-  imagen2:any;
+  imageBase64: string | null = null;
+  imageBase642: string | null = null;
   Distritos:any=[];
   Secciones:any=[];
   Usuarios:any=[];
   formGroup!:FormGroup;
   selectedMunicipio:number=0;
 
+  
   simpatizante:simpatizantes={
     apellidoP:"",
     apellidoM:"",
@@ -43,8 +44,8 @@ export default class SimpatizantesComponent implements OnInit {
     direccion:"",
     vinculacion:"",
     liderazgo:0,
-    fcredencial: new File([], '') ,
-    bcredencial: new File([], '')
+    fcredencial:"",
+    bcredencial: ""
   }
   
   ngOnInit(): void {
@@ -65,7 +66,7 @@ export default class SimpatizantesComponent implements OnInit {
       next: response=>{
 
         this.Usuarios=response;
-        console.log(this.Usuarios)
+        //console.log(this.Usuarios)
   
       },
       error: error=>console.log(error)
@@ -94,17 +95,26 @@ export default class SimpatizantesComponent implements OnInit {
     })
    }
 
-   onFileChange1(event: any) {
-    const file = event.target.files[0];  // Obtener el primer archivo seleccionado
-    if (file) {
-      //console.log(file);
-      const controlName = event.target.name;  // Esto te da el nombre del control
-        this.simpatizante.fcredencial = file;
-        //this.simpatizante.bcredencial = file;
-      
+   // Método que se ejecuta al seleccionar un archivo
+  onFileChange1(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0]; // Obtener el archivo seleccionado
+      const reader = new FileReader();
+
+      // Evento que se ejecuta cuando el archivo ha sido leído
+      reader.onload = () => {
+        const base64String = reader.result as string; // Contiene el archivo en base64
+        this.imageBase64 = base64String.split(',')[1]; // Remover encabezado "data:image/jpeg;base64,"
+        this.simpatizante.fcredencial=this.imageBase64
+        //console.log('Base64:', this.imageBase64); // Mostrar el resultado en la consola
+      };
+      // Leer el archivo como DataURL (Base64)
+      reader.readAsDataURL(file);
     }
   }
-
+/*
   onFileChange2(event: any) {
     const file = event.target.files[0];  // Obtener el primer archivo seleccionado
     if (file) {
@@ -114,8 +124,55 @@ export default class SimpatizantesComponent implements OnInit {
         this.simpatizante.bcredencial = file;
       
     }
+  }¨*/
+
+  onFileChange2(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0]; // Obtener el archivo seleccionado
+      const reader = new FileReader();
+
+      // Evento que se ejecuta cuando el archivo ha sido leído
+      reader.onload = () => {
+        const base64String = reader.result as string; // Contiene el archivo en base64
+        this.imageBase642 = base64String.split(',')[1]; // Remover encabezado "data:image/jpeg;base64,"
+        this.simpatizante.bcredencial=this.imageBase642
+        //console.log('Base64:', this.imageBase642); // Mostrar el resultado en la consola
+      };
+      // Leer el archivo como DataURL (Base64)
+      reader.readAsDataURL(file);
+    }
   }
 
+  submitData(){
+    this.servicios.añadirSimpatizante(this.simpatizante).subscribe({
+      next:()=>console.log(),
+      
+      complete:()=>console.info()})
+      //console.log(this.simpatizante)
+    this.simpatizante={
+      apellidoP:"",
+      apellidoM:"",
+      nombre:"",
+      fechaN:"",
+      telefono:"",
+      correo:"",
+      municipio:0,
+      distrito:0,
+      seccion:0,
+      colonia:0,
+      codigoP:"",
+      direccion:"",
+      vinculacion:"",
+      liderazgo:0,
+      fcredencial:"",
+      bcredencial: ""
+     
+    }
+    //this.router.navigate(['modules/usuarios'])
+    alert('Simpatizante agregado exitosamente.');
+  }
   
 
   tomarDatos(){
@@ -141,7 +198,8 @@ export default class SimpatizantesComponent implements OnInit {
       this.simpatizante.vinculacion="Ninguno"
     }
     this.simpatizante.liderazgo=Number(liderazgo)
-    console.log(this.simpatizante)
+    //console.log(this.simpatizante)
+    this.submitData()
   }
   
 
@@ -180,12 +238,11 @@ export default class SimpatizantesComponent implements OnInit {
       {
       next: response=>{
         this.Secciones=response;
-        console.log(this.Secciones)
+        //console.log(this.Secciones)
       },
       error: error => console.log(error)
     }
       );
   } 
-  
 
 }

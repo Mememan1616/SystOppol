@@ -13,6 +13,6 @@ export interface simpatizantes{
     direccion:string,
     vinculacion:string,
     liderazgo:number,
-    fcredencial:File,
-    bcredencial:File
+    fcredencial:string,
+    bcredencial:string
 }

@@ -5,7 +5,7 @@ import { Municipios } from './interfaces/municipios';
 import { Distritos } from './interfaces/distritos';
 import { Secciones } from './interfaces/secciones';
 import { Usuarios } from './interfaces/usuarios';
-
+import { simpatizantes } from './interfaces/simpatizantes';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +49,8 @@ export class ModulesServicesService {
     return this.http.put('http://127.0.0.1:5000/modificar_usuario/'+id,datos)
   }
 
-  
+  public añadirSimpatizante(datos:simpatizantes){
+    //console.log(datos)
+    return this.http.post('http://127.0.0.1:5000/simpatizantes',datos)
+  }
 }
