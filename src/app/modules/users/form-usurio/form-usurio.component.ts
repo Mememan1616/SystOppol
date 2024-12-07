@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModulesServicesService } from '../../modules-services.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink,Router } from '@angular/router';
-import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Usuarios } from '../../interfaces/usuarios';
 
@@ -35,10 +35,10 @@ export default class  FormUsurioComponent implements OnInit {
 
   initForm(){
     return this.fb.group({
-      usuario:[''],
-      password:[''],
-      nombre:[''],
-      cargo:[''],
+      usuario:['', Validators.required],
+      password:['', Validators.required],
+      nombre:['', Validators.required],
+      cargo:['', Validators.required],
     })
     
 

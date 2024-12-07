@@ -1,9 +1,9 @@
 import { Component,  OnInit } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Municipios } from '../interfaces/municipios';
 import { ModulesServicesService } from '../modules-services.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink,Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { simpatizantes } from '../interfaces/simpatizantes';
 
@@ -11,18 +11,19 @@ import { simpatizantes } from '../interfaces/simpatizantes';
 @Component({
   selector: 'app-simpatizantes',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule, CommonModule],
+  imports: [ReactiveFormsModule,FormsModule, CommonModule,RouterLink],
   templateUrl: './simpatizantes.component.html',
   styleUrl: './simpatizantes.component.css'
 })
 
 export default class SimpatizantesComponent implements OnInit {
  
-  constructor(public servicios:ModulesServicesService, private fb: FormBuilder){}
+  constructor(public servicios:ModulesServicesService, private fb: FormBuilder, private router:Router){}
   dataSource:any=[];
   imageBase64: string | null = null;
   imageBase642: string | null = null;
   Distritos:any=[];
+  Colonias:any=[];
   Secciones:any=[];
   Usuarios:any=[];
   formGroup!:FormGroup;
@@ -76,22 +77,22 @@ export default class SimpatizantesComponent implements OnInit {
 
   initForm():FormGroup{
     return this.fb.group({
-      apellidoP:[''],
-      apellidoM:[''],
-      nombre:[''],
-      fechaNac:[''],
-      telefono:[''],
-      correo:[''],
-      municipio:[''],
-      distrito:[''],
-      seccion:[''],
-      codigoP:[''],
-      colonia:[''],
-      direccion:[''],
-      vinculacion:[''],
-      liderazgo:[''],
-      fcredencial:[''],
-      bcredencial:['']
+      apellidoP:['', Validators.required],
+      apellidoM:['', Validators.required],
+      nombre:['',Validators.required],
+      fechaNac:['',Validators.required],
+      telefono:['',Validators.required],
+      correo:['',Validators.required],
+      municipio:['', Validators.required],
+      distrito:['', Validators.required],
+      seccion:['',Validators.required],
+      codigoP:['',Validators.required],
+      colonia:['',Validators.required],
+      direccion:['',Validators.required],
+      vinculacion:['',Validators.required],
+      liderazgo:['',Validators.required],
+      fcredencial:['',Validators.required],
+      bcredencial:['', Validators.required]
     })
    }
 
@@ -200,10 +201,9 @@ export default class SimpatizantesComponent implements OnInit {
     this.simpatizante.liderazgo=Number(liderazgo)
     //console.log(this.simpatizante)
     this.submitData()
+    this.router.navigate(['modules/usuarios'])
   }
   
-
-
    getMunicipio():void{
     const{municipio}=this.formGroup.value
     let id=Number(municipio)
@@ -217,7 +217,6 @@ export default class SimpatizantesComponent implements OnInit {
     let id1=Number(distrito)
     //console.log(distrito+"/"+municipio)
     this.secciones(id1,id2)
-    
    }
   
 
@@ -243,6 +242,20 @@ export default class SimpatizantesComponent implements OnInit {
       error: error => console.log(error)
     }
       );
-  } 
+  }
+  
+  colonias():void{
+    const{codigoP}=this.formGroup.value
+    let cp=codigoP;
+    this.servicios.getColonias(cp).subscribe({
+    
+      next: response=>{
+        this.Colonias=response;
+        console.log(this.Colonias)
+      },
+      error: error => console.log(error)
+
+    })
+  }
 
 }

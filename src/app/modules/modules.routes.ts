@@ -22,7 +22,12 @@ export default [
     {
         path:'eliminar_usuario/:id',
         loadComponent:()=> import('./users/del-usuarios/del-usuarios.component')
+    },
+    {
+        path:'listarSimpatizantes',
+        loadComponent:()=> import('./smp/ver-simpatizantes/ver-simpatizantes.component')
     }
+    
 
 
 ] as Routes

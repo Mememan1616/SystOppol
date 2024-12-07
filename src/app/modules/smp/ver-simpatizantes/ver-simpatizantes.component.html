@@ -13,49 +13,48 @@
                         ID
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Username
+                        Seccion
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nombre completo
+                        Distrito
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Cargo
+                        Nombre
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Lider
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Editar
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Eliminar
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="bg-white border-b text-base text-gray-800"
-                *ngFor="let usuario of users.usuarios">
+                *ngFor="let s of simpa.simpatizantes">
                     <td class="px-6 py-4">
-                        {{usuario.idUsuario}}
+                        {{s.idSimpatizante}}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        {{s.seccion}}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        {{s.distrito}}
                     </td>
                     <td class="px-6 py-4">
-                        {{usuario.usuario}}
+                        {{s.apellidoP}} {{s.apellidoA}} {{s.nombre}}
                     </td>
                     <td class="px-6 py-4">
-                        {{usuario.nombre}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{usuario.cargo}}
+                        {{s.encuestador}}
                     </td>
 
                     <td class="px-6 py-4">
                         <button type="button" class="bi bi-pen-fill
                         text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                        [routerLink]="['/modules/modificar_usuario/',usuario.idUsuario]">
+                        [routerLink]="['/modules/modificar_usuario/',s.idUsuario]">
                             Editar</button>
-
-                    </td>
-                    <td class="px-6 py-4">
-                        <button type="button" class="bi bi-trash3-fill
-                        text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                        [routerLink]="['/modules/eliminar_usuario/',usuario.idUsuario]"> Eliminar</button>
                     </td>
                     
                 </tr>
@@ -64,3 +63,4 @@
     </div>
     
 </div>
+

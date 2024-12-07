@@ -6,6 +6,7 @@ import { Distritos } from './interfaces/distritos';
 import { Secciones } from './interfaces/secciones';
 import { Usuarios } from './interfaces/usuarios';
 import { simpatizantes } from './interfaces/simpatizantes';
+import { Colonias } from './interfaces/colonias';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class ModulesServicesService {
 
   public getMunicipios():Observable<Municipios[]>{
     return this.http.get<Municipios[]>('http://127.0.0.1:5000/municipios')
+  }
+
+  public getColonias(cp:String):Observable<Colonias[]>{
+    //console.log(cp)
+    return this.http.get<Colonias[]>('http://127.0.0.1:5000/colonias/'+cp)
   }
 
   public getDistritos(id:number):Observable<Distritos[]>{
@@ -52,5 +58,9 @@ export class ModulesServicesService {
   public añadirSimpatizante(datos:simpatizantes){
     //console.log(datos)
     return this.http.post('http://127.0.0.1:5000/simpatizantes',datos)
+  }
+  
+  public listarSimpatizantes():Observable<simpatizantes[]>{
+    return this.http.get<simpatizantes[]>('http://127.0.0.1:5000/simpatizantes')
   }
 }
