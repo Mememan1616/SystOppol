@@ -1,0 +1,163 @@
+
+<h1 class="text-5xl text-black-900  font-extrabold">Simpatizante</h1>
+<div>
+  <p class="text-white">-----------------------------</p>
+</div>
+
+<form class="max-w-sm mx-auto"  [formGroup]="formGroup" (ngSubmit)="tomarDatos()">
+    <div class="grid grid-cols-2 gap-2"> 
+    <div>
+        <label for="text" class="block mb-2 text-sm text-left text-gray-900">Apellido Paterno</label>
+        <input type="text" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="" required
+        formControlName="apellidoP">
+
+        <label for="text" class="block mb-2 text-sm text-left text-gray-900">Nombre</label>
+        <input type="text" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+        formControlName="nombre">
+
+        <label for="email" class="block mb-2 text-sm text-left text-gray-900">Telefono</label>
+        <input type="text" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+        formControlName="telefono">
+
+        <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Municipio</label>
+        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        formControlName="municipio"
+        (change)="getMunicipio()"
+        >
+          <option selected value=""> Selecciona un municipio</option>
+          <option
+          *ngFor="let municipio of Municipios.municipios" [value]="municipio.idMunicipio">{{municipio.municipio}}</option>
+        </select>
+
+        <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Seccion Electoral</label>
+        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        formControlName="seccion">
+        <option selected value="">Selecciona una seccion</option>
+        <option
+        *ngFor="let seccion of Secciones.secciones" [value]="seccion.idSeccion">{{seccion.seccion}}</option>
+        </select>
+
+        <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Liderazgo</label>
+        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        formControlName="liderazgo">
+          <option selected value="">Selecciona una opcion</option>
+          <option
+          *ngFor="let usuario of Usuarios.usuarios" [value]="usuario.idUsuario"
+          >{{usuario.nombre}}</option>
+         
+        </select>
+
+        
+
+        
+    <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Tipo de vinculacion</label>
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    formControlName="vinculacion">
+      <option selected value="">Selecciona una opcion</option>
+      <option value=1>Militante</option>
+      <option value=2>Simpatizante</option>
+      <option value=3>Ninguno</option>
+    </select>
+
+        <h3>Frontal de Credencial:</h3>
+        <img *ngIf="dataSource?.fcredencial; else noFrontal" 
+        [src]="'data:image/jpeg;base64,'+dataSource.fcredencial " alt="Frontal Credencial" />
+        <ng-template #noFrontal>
+        <p>No hay imagen frontal disponible</p>
+        </ng-template>
+
+    </div>
+
+    <div>
+        <label for="text" class="block mb-2 text-sm text-left text-gray-900">Apellido Materno</label>
+        <input type="text" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+        formControlName="apellidoM">
+
+        <label for="date" class="block mb-2 text-sm text-left text-gray-900">Fecha Nacimiento</label>
+        <input type="date" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=""
+        formControlName="fechaNac">
+
+        
+        <label for="email" class="block mb-2 text-sm text-left text-gray-900">Correo</label>
+        <input type="email" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@gmail.com"
+        formControlName="correo">
+
+        <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Distrito Local</label>
+        <select id="distritos" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        formControlName="distrito"
+        (change)="getMunDist()">
+        <option selected value=""> Selecciona un Distrito</option>
+        <option 
+        *ngFor="let distrito of Distritos.distritos" [value]="distrito.idDistrito">{{distrito.distrito}}</option>
+        </select>
+
+        <div class="row">
+            <label for="email" class="block mb-2 text-sm text-left text-gray-900">Codigo postal</label>
+            <div class="col-6">
+              <input type="number" id="email" aria-describedby="helper-text-explanation" 
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              placeholder="37744" 
+              formControlName="codigoP">
+            </div>
+            <div class="col-6">
+              <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-xs px-4 py-1.5 text-center me-2 mb-2
+              bi bi-rocket-fill"
+              (click)="getCol()"> Buscar</button>
+            </div>
+          </div>
+          <label for="countries" class="block mb-2 text-sm font-medium text-left text-gray-900">Colonia</label>
+          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          formControlName="colonia">
+            <option selected value="#">Selecciona una colonia</option>
+            <option *ngFor="let colonia of Colonias.colonias"[value]="colonia.idColonia">{{colonia.colonia}}</option>
+          </select>
+
+        <label for="email" class="block mb-2 text-sm text-left text-gray-900">Direccion</label>
+        <input type="text" id="email" aria-describedby="helper-text-explanation" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+        placeholder="Calle x numero 222"
+        formControlName="direccion">
+        <h3>Trasera de Credencial:</h3>
+        <img *ngIf="dataSource?.bcredencial; else noTrasera" 
+        [src]="'data:image/jpeg;base64,' + dataSource.bcredencial" alt="Trasera Credencial" />
+        <ng-template #noTrasera>
+          <p>No hay imagen trasera disponible</p>
+        </ng-template>
+    </div>
+    </div>
+    <p class="text-white">-</p>
+    <div class="row">
+    <div class="col-6">
+    <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2
+    bi bi-box-arrow-up"> Editar</button>
+   
+    </div>
+    <div class="col-6">
+        <button type="button" class="
+        bi bi-trash3-fill
+        text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        (click)="borraSp()"> Eliminar</button>
+    
+        <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2
+        bi bi-x-square-fill"
+        [routerLink]="['/modules/listarSimpatizantes']"
+        > Cancelar</button>
+
+    
+    </div>
+    </div>
+    
+</form>
+
+<div>
+    
+  
+   
+  </div>
+  

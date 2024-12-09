@@ -63,4 +63,16 @@ export class ModulesServicesService {
   public listarSimpatizantes():Observable<simpatizantes[]>{
     return this.http.get<simpatizantes[]>('http://127.0.0.1:5000/simpatizantes')
   }
+
+  public buscarSimpatizantes(id:number):Observable<simpatizantes>{
+    return this.http.get<simpatizantes>('http://127.0.0.1:5000/buscarSimpatizante/'+id)
+  }
+  public modificarSimpatizante(id:number,datos:simpatizantes){
+    return this.http.put('http://127.0.0.1:5000//modificar_sp/'+id,datos)
+  }
+
+  public borrarSimpatizante(id:number) {
+    //console.log(`http://127.0.0.1:5000/eliminar_usuario/${id}`);
+    return this.http.put('http://127.0.0.1:5000/eliminar_sp/'+id, {});
+  }
 }

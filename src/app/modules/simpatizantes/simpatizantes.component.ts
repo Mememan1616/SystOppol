@@ -201,7 +201,7 @@ export default class SimpatizantesComponent implements OnInit {
     this.simpatizante.liderazgo=Number(liderazgo)
     //console.log(this.simpatizante)
     this.submitData()
-    this.router.navigate(['modules/usuarios'])
+    this.router.navigate(['modules/listarSimpatizantes'])
   }
   
    getMunicipio():void{

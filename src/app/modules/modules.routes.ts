@@ -26,7 +26,11 @@ export default [
     {
         path:'listarSimpatizantes',
         loadComponent:()=> import('./smp/ver-simpatizantes/ver-simpatizantes.component')
-    }
+    },
+    {
+        path:'editarSimpatizantes/:id',
+        loadComponent:()=> import('./smp/sp-edit-eli/sp-edit-eli.component')
+    }   
     
 
 
